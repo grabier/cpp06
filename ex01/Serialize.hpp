@@ -1,31 +1,30 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ScalarConverter.hpp                                :+:      :+:    :+:   */
+/*   Serialize.hpp                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: gmontoro <gmontoro@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2025/04/16 13:25:23 by gmontoro          #+#    #+#             */
-/*   Updated: 2025/04/22 17:36:10 by gmontoro         ###   ########.fr       */
+/*   Created: 2025/04/22 17:19:21 by gmontoro          #+#    #+#             */
+/*   Updated: 2025/04/22 17:48:29 by gmontoro         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
+#ifndef SERIALIZE_HPP
+#define SERIALIZE_HPP
 #include <iostream>
-#include <sstream>
-#include <cctype>
-#include <limits>
+#include <stdint.h>
+#include <cstdlib>
+#include "Data.h"
 
-class ScalarConverter{
+class Serializer{
 	private:
-		ScalarConverter(){}
-		ScalarConverter(const ScalarConverter &){}
-		~ScalarConverter(){}
-		void operator=(const ScalarConverter &){}
+		Serializer(){}
+		Serializer(const Serializer &){}
+		~Serializer(){}
+		void operator=(const Serializer &){}
 	public:
-		static void convert(std::string);
+		static uintptr_t serialize(Data *);
+		static Data *deserialize(uintptr_t);
 };
-
-void putnan();
-void putinf(int mode);
-int is_special(std::string input);
-int parse(std::string input);
+#endif

@@ -1,31 +1,23 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ScalarConverter.hpp                                :+:      :+:    :+:   */
+/*   Serialize.cpp                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: gmontoro <gmontoro@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2025/04/16 13:25:23 by gmontoro          #+#    #+#             */
-/*   Updated: 2025/04/22 17:36:10 by gmontoro         ###   ########.fr       */
+/*   Created: 2025/04/22 17:19:16 by gmontoro          #+#    #+#             */
+/*   Updated: 2025/04/22 17:54:13 by gmontoro         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include <iostream>
-#include <sstream>
-#include <cctype>
-#include <limits>
+#include "Serialize.hpp"
 
-class ScalarConverter{
-	private:
-		ScalarConverter(){}
-		ScalarConverter(const ScalarConverter &){}
-		~ScalarConverter(){}
-		void operator=(const ScalarConverter &){}
-	public:
-		static void convert(std::string);
-};
+uintptr_t Serializer::serialize(Data *ptr){
+	uintptr_t ret = reinterpret_cast<uintptr_t>(ptr);
+	return (ret);
+}
 
-void putnan();
-void putinf(int mode);
-int is_special(std::string input);
-int parse(std::string input);
+Data *Serializer::deserialize(uintptr_t raw){
+	Data *ret = reinterpret_cast<Data *>(raw);
+	return (ret);
+}
